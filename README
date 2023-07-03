@@ -1,0 +1,16 @@
+
+* --> | * --> *
+
+soak
+
+Soak up standard input and write it to a file.
+
+soak out.txt
+...
+...
+...
+^D
+
+soak < in.txt > out.txt
+
+cat in.txt | soak | tee > out.txt
