@@ -1,0 +1,64 @@
+.\" SPDX-License-Identifier: MIT
+.\" SPDX-FileCopyrightText: 2023 Bradley Jones <brdjns@gmx.us
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.TH "SOAK" "1" "2023-07-04"
+.PP
+.SH NAME
+.PP
+soak - soak up standard input and write it to a file
+.PP
+.SH SYNOPSIS
+.PP
+\fBsoak\fR	[-h] [-v] [-a \fIfile\fR] | [\fIfile\fR]
+.PP
+sed '\&.\&.\&.\&'\& \fIfile\fR | grep '\&.\&.\&.\&'\& | \fBsoak\fR [-a] \fIfile\fR
+.PP
+.SH DESCRIPTION
+.PP
+\fBsoak\fR reads and writes standard input to the specified \fIfile\fR.\&
+Unlike a shell redirect, \fBsoak\fR soaks up all its input before writing
+the output file.\&  This allows constructing pipelines that read from and
+write to the same \fIfile\fR.\&
+.PP
+\fBsoak\fR preserves the permissions of \fIfile\fR if already extant.\&
+.PP
+If \fIfile\fR is not specified, \fBsoak\fR outputs to stdout.\&
+.PP
+.SH OPTIONS
+.PP
+\fB-h\fR
+.RS 4
+Show help information
+.PP
+.RE
+\fB-v\fR
+.RS 4
+Show version information
+.PP
+.RE
+\fB-a\fR \fIfile\fR
+.RS 4
+Append the standard input to \fIfile\fR.\&  If the file does not
+exist, a new  file is created in-place.\&  In this case, \fBsoak\fR
+behaves as if called without \fB-a\fR.\&
+.PP
+.RE
+.SH EXIT STATUS
+.PP
+0	success
+.PP
+1	failure
+.PP
+.PP
+.SH SEE ALSO
+.PP
+\fBcat\fR(1), \fBsponge\fR(1), \fBtee\fR(1)
+.PP
+.SH AUTHOR
+.PP
+\fBsoak\fR was written by Bradley Jones <brdjns@gmx.\&us>, and is a C
+.br
+implementation of \fBsponge\fR by Colin Watson and Tollef Fog Heen.\&
